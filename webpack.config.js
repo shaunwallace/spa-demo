@@ -33,7 +33,10 @@ function mergeConfigs(config) {
         Containers: path.resolve(__dirname, 'client', 'src', 'containers'),
         Reducers: path.resolve(__dirname, 'client', 'src', 'reducers'),
         Stores: path.resolve(__dirname, 'client', 'src', 'stores'),
-        Components: path.resolve(__dirname, 'client', 'src', 'components')
+        Components: path.resolve(__dirname, 'client', 'src', 'components'),
+        Config: path.resolve(__dirname, 'client', 'src', 'config'),
+        Actions: path.resolve(__dirname, 'client', 'src', 'actions'),
+        Utils: path.resolve(__dirname, 'client', 'src', 'utils')
       }
     },
     module: {

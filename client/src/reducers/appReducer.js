@@ -1,7 +1,11 @@
 export default (state = {}, action = {}) => {
   switch (action.type) {
-    case 'APP_INIT':
-      return { ...state, initialized: true };
+    case 'COMPANIES_RECEIVED':
+      return { 
+        ...state,
+        companyNames: Object.keys(action.companies),
+        companies: action.companies
+      };
     default:
       return state;
   }
