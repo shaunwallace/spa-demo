@@ -1,0 +1,30 @@
+{
+  "name": "spa-example",
+  "version": "1.0.0",
+  "description": "single page application example",
+  "main": "index.js",
+  "author": "Shaun Wallace <sjwallace116@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "webpack-dev-server --env.start"
+  },
+  "dependencies": {
+    "preact": "^8.2.6",
+    "preact-redux": "^2.0.3",
+    "redux": "^3.7.2",
+    "redux-thunk": "^2.2.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-preset-env": "^1.6.1",
+    "clean-webpack-plugin": "^0.1.17",
+    "html-webpack-plugin": "^2.30.1",
+    "jest": "^21.2.1",
+    "webpack": "^3.8.1",
+    "webpack-dev-server": "^2.9.3",
+    "webpack-merge": "^4.1.0"
+  }
+}
