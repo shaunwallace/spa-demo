@@ -1,3 +1,3 @@
 export default {
-  'companies': '/api/data/testdata.json'
-}
+  companies: `${process.env.NODE_ENV === 'production' ? '/client/src/dist' : '/api'}/data/testdata.json`
+};

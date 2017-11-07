@@ -4,8 +4,11 @@ import { Provider } from 'preact-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
 import AppStore from 'Stores/appStore';
 import AppContainer from 'Containers/appContainer';
+import history from 'Middleware/history';
 
-let store = createStore(AppStore, applyMiddleware(thunk));
+import './app.scss';
+
+let store = createStore(AppStore, applyMiddleware(thunk, history));
 
 if (process.env.NODE_ENV !== 'production') {
   const composeEnhancers =
@@ -14,7 +17,7 @@ if (process.env.NODE_ENV !== 'production') {
     compose;
   store = createStore(
     AppStore,
-    composeEnhancers(applyMiddleware(thunk)),
+    composeEnhancers(applyMiddleware(thunk, history)),
   );
 }
 

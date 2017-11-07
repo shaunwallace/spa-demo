@@ -1,0 +1,21 @@
+html {
+  font-family: 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+main {
+  display: grid;
+  grid-template-areas:   "header header"
+                         "sidebar content"
+                         "footer footer";
+  grid-template-rows:    150px 1fr 100px;
+  grid-template-columns: 200px 1fr;
+}
+
+.table-placeholder {
+  grid-area: content;
+  justify-content: center;
+  align-items: center;
+  display: grid;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px;
+}

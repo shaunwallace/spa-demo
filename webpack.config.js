@@ -4,6 +4,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const merge = require('webpack-merge');
 
 const developmentConfig = require('./webpack.dev.config.js');
+const productionConfig = require('./webpack.prod.config.js');
 const devServerConfig = require('./webpack.devserver.config');
 
 function mergeConfigs(config) {
@@ -34,9 +35,11 @@ function mergeConfigs(config) {
         Reducers: path.resolve(__dirname, 'client', 'src', 'reducers'),
         Stores: path.resolve(__dirname, 'client', 'src', 'stores'),
         Components: path.resolve(__dirname, 'client', 'src', 'components'),
+        Middleware: path.resolve(__dirname, 'client', 'src', 'middleware'),
         Config: path.resolve(__dirname, 'client', 'src', 'config'),
         Actions: path.resolve(__dirname, 'client', 'src', 'actions'),
-        Utils: path.resolve(__dirname, 'client', 'src', 'utils')
+        Utils: path.resolve(__dirname, 'client', 'src', 'utils'),
+        Controllers: path.resolve(__dirname, 'client', 'src', 'controllers'),
       }
     },
     module: {
@@ -85,6 +88,7 @@ function getEnvironmentalConfig(env) {
   if (!env || env.development || env.test) {
     return developmentConfig();
   } else if (env.production) {
+    console.log('production')
     return productionConfig();
   }
 

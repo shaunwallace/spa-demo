@@ -1,7 +1,4 @@
-import appReducer from 'Reducers/appReducer';
+import { combineReducers } from 'redux';
+import appState from 'Reducers/appReducer';
 
-export default (state = {}, action) => {
-  return {
-    appState: appReducer(state.appState, action),
-  };
-};
+export default combineReducers({ appState });

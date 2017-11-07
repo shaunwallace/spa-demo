@@ -1,0 +1,22 @@
+ul {
+  margin: 0;
+  padding: 0;
+
+  li {
+    height: 51px;
+    transition: background 200ms ease-in-out;
+    justify-items: left;
+    align-items: center;
+    padding-left: 16px;
+    display: grid;
+
+    &:hover {
+      background: #f5f5f5;
+      cursor: pointer;
+    }
+
+    &.active {
+      background: #f5f5f5;
+    }
+  }
+}

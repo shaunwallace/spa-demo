@@ -1,27 +1,29 @@
-export function normalize(schema, data) {
-  const schema = {
-    returnType: [],
-    properties: [],
-    id: 'id',
-    path: ''
-  };
-
-  if (!scheme.path) {
-    switch(Object.prototype.toString.call(schema.returnType)) {
-      case '[object Array]':
-        Object.keys(data).map(key => {
+export default (schema, data) => {
+  // const schema = {
+  //   returnType: [],
+  //   properties: [],
+  //   id: 'id',
+  //   path: ''
+  // };
+  if (!schema.path) {
+    switch(schema.returnType) {
+      case 'array':
+        return Object.keys(data).map(key => {
           let o = {}
           if (schema.properties) {
             schema.properties.forEach(prop => {
               if (data[key][prop]) {
                 o[prop] = data[key][prop];
-                o[id] = data[schema.id];
+                o.id = data[key][schema.id];
               }
             });
+            return o;
           } else {
             return key;
           }
         });
     }
   }
+
+  return data;
 }
