@@ -1,6 +1,7 @@
 import Preact, { h, Component } from 'preact';
 
-const FormattedDate = ({ date, locale, options = {hour: 'numeric', minute: 'numeric', second: 'numeric'} }) => 
-  <span>{new Date(date).toLocaleDateString(locale, options)}</span>
+const FormattedDate = ({ dateString }) => 
+  <div>{`${new Date(dateString)}`}</div>
+  
 
 export default FormattedDate;

@@ -16,12 +16,14 @@ class AppContainer extends Component {
       children: PropTypes.arrayOf(PropTypes.object),
       id: PropTypes.string,
       name: PropTypes.string
-    })
+    }),
+    breadcrumbs: PropTypes.arrayOf(PropTypes.string)
   }
 
   static defaultProps = {
     companyNames: [],
-    activeCompany: null
+    activeCompany: null,
+    breadcrumbs: []
   }
 
   componentDidMount() {
@@ -34,7 +36,8 @@ class AppContainer extends Component {
       activeParent,
       activeCompany,
       getSelectedCompany,
-      getSelectedChild 
+      getSelectedChild,
+      breadcrumbs
     } = this.props;
 
     return (
@@ -47,7 +50,12 @@ class AppContainer extends Component {
             onClick={id => getSelectedCompany(id) }
           />
         </Sidebar>
-        { activeCompany ? <Table data={activeCompany} onClick={id => getSelectedChild(id) } /> :
+        { activeParent ?
+          <Table
+            data={activeParent}
+            nested={breadcrumbs}
+            onClick={id => getSelectedChild(id) }
+          /> :
           <div className="table-placeholder">
             <h2>Please selected a company</h2>
           </div>
@@ -61,6 +69,7 @@ const mapStateToProps = state => ({
   companyNames: state.appState.companyNames,
   activeCompany: state.appState.activeCompany,
   activeParent: state.appState.activeParent,
+  breadcrumbs: state.appState.keyPath,
 });
 
 const mapDispatchToProps = dispatch => ({

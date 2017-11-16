@@ -21,9 +21,9 @@ const activeCompanyCache = (() => {
 
 function getActiveCompanies(companies, keyPath) {
   return {
-    activeCompany: keyPath.length > 1
-      ? activeCompanyCache(companies, keyPath)
-      : companies[keyPath[0]],
+    // activeCompany: keyPath.length > 1
+    //   ? activeCompanyCache(companies, keyPath)
+    //   : companies[keyPath[0]],
     activeParent: companies[keyPath[0]]
   };
 }
@@ -43,7 +43,8 @@ export default (state = {}, action = {}) => {
     case 'UPDATE_ACTIVE_COMPANY':
       return {
         ...state,
-        ...getActiveCompanies(state.companies, action.keyPath)
+        ...getActiveCompanies(state.companies, action.keyPath),
+        keyPath: action.keyPath
       };
     default:
       return state;

@@ -31,9 +31,33 @@ export default class ItemList extends Component {
 
   onClick = id => () => this.props.onClick(id)
 
+  renderChildren = (children, nested) => {
+    return children.map((child, i) => {
+      const hasNested = nested.indexOf(child.id) !== -1 && child.children && child.children.length;
+      return (
+        <tr className={`${hasNested ? 'nested' : ''}`}>
+          <div>
+            <tr style={{ display: 'flex' }} onClick={this.onClick(child.id)}>
+              <td>{child.name}</td>
+              <td><FormattedDate dateString={child.created} /></td>
+              <td><FormattedDate dateString={child.updated} /></td>
+            </tr>
+            {hasNested ?
+              <table>
+                <tbody>
+                  {this.renderChildren(child.children, nested.slice(1))}
+                </tbody>
+              </table> : null
+            }
+          </div>
+        </tr>
+      );
+    })
+  }
+
   render() {
     const { name, updated, created, children = [] } = this.props.data;
-    const createdDate = new Date(created);
+    const { nested } = this.props;
 
     return (
       <div className="table-container">
@@ -47,10 +71,10 @@ export default class ItemList extends Component {
             <tr>
               <th>{name}</th>
               <th>
-                <Date dateString={created} />
+                <FormattedDate dateString={created} />
               </th>
               <th>
-                <Date dateString={updated} />
+                <FormattedDate dateString={updated} />
               </th>
             </tr>
           </thead>
@@ -58,17 +82,7 @@ export default class ItemList extends Component {
         <div className="scrollable-table">
           <table>
             <tbody>
-              {
-                children.map(child => {
-                  return (
-                    <tr onClick={this.onClick(child.id)}>
-                      <td>{child.name}</td>
-                      <td><Date dateString={created} /></td>
-                      <td><Date dateString={updated} /></td>
-                    </tr>
-                  );
-                })
-              }
+              {this.renderChildren(children, nested.slice(1))}
             </tbody>
           </table>
         </div>

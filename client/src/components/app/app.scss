@@ -12,6 +12,10 @@ main {
   grid-template-columns: 200px 1fr;
 }
 
+header {
+  grid-area: header;
+}
+
 .table-placeholder {
   grid-area: content;
   justify-content: center;
